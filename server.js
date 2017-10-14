@@ -23,6 +23,7 @@ app.get('/users', function(req, res) {
   });
 });
 
+
 // Getting to create page
 app.get('/create', function(req, res) {
   knex('users').then((userList) => {
@@ -45,28 +46,19 @@ app.post('/create', function(req, res) {
       //res.sendStatus(200);
       res.redirect('/users');
     })
-
     .catch((err) => {
       console.error(err);
       res.sendStatus(400);
     });
-
-    // function(err){
-    //   if(err) throw err;
-    //     console.log('Updated!');
-    //   res.redirect('/users');
-    // });
 });
+
 
 // Edit Page
 app.get('/edit/:uid', function(req, res) {
   knex('users')
   .where('id', req.params.uid)
   .then((usersList) => {
-
-    //console.log(usersList);
     res.render('edit', {myObject: usersList[0]});
-
   })
   .catch((err) => {
     console.error(err)
@@ -92,7 +84,6 @@ app.post('/edit/:uid', function(req, res) {
 
 // Delete one user
 app.get('/delete/:id', function(req, res) {
-  
   knex('users')
     .del()
     .where('id', req.params.id)
@@ -105,22 +96,6 @@ app.get('/delete/:id', function(req, res) {
       res.sendStatus(400);
     });
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 // Server message on terminal window

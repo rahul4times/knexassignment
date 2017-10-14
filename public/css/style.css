@@ -50,3 +50,86 @@ th{
 nav{
   padding: 0 2% 0 2%;
 }
+.material-icons{
+  vertical-align: middle;
+  padding-right: 2%;
+}
+table a{
+  color: #289304;
+  text-transform: uppercase;
+}
+table a:hover{
+  color: #000;
+}
+.path{
+  background-color: #fbfbfb;
+  padding: 1% 1% 1% 2%;
+  text-transform: uppercase;
+  font-size: 14px;
+  vertical-align: middle;
+  border: 1px solid #f5f5f5;
+  border-radius: 2px;
+}
+.path ul{
+  padding: 0;
+  margin: 0;
+}
+.path ul li{
+  display: inline-block;
+  color: #007EA7;
+}
+.path ul li a{
+  color: #007EA7;
+}
+.path ul li a:hover{
+  color: #000;
+}
+
+/*----------- Form style starts here ---------*/
+
+.form-lable{
+  font-size: 18px;
+  text-transform: uppercase;
+  color: #000;
+}
+
+#user-id{
+  font-size: 18px;
+  width: 60px;
+  height: 30px;
+  padding-left: 1%;
+  border: 1px solid #cbcbcb;
+  border-radius: 2px;
+}
+#first-name{
+  font-size: 18px;
+  width: 300px;
+  height: 30px;
+  padding-left: 1%;
+  border: 1px solid #cbcbcb;
+  border-radius: 2px;
+}
+#last-name{
+  font-size: 18px;
+  width: 300px;
+  height: 30px;
+  padding-left: 1%;
+  border: 1px solid #cbcbcb;
+  border-radius: 2px;
+}
+#user-email{
+  font-size: 18px;
+  width: 300px;
+  height: 30px;
+  padding-left: 1%;
+  border: 1px solid #cbcbcb;
+  border-radius: 2px;
+}
+#user-age{
+  font-size: 18px;
+  width: 50px;
+  height: 30px;
+  padding-left: 1%;
+  border: 1px solid #cbcbcb;
+  border-radius: 2px;
+}
