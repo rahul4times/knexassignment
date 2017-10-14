@@ -74,6 +74,7 @@ app.post('/edit/:uid', function(req, res) {
     .then((result) => {
       console.log(req.body);
       res.redirect('/edit/' + req.params.uid);
+
     })
     .catch((err) => {
       console.log("THIS ERROR");

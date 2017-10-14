@@ -1,30 +1,98 @@
+
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Create New User</title>
-    <link rel="stylesheet" href="/style.css">
-  </head>
-  <body>
-    <h1>Create New User</h1>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Parallax Template - Materialize</title>
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="/css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+</head>
+<body>
+  <nav class="blue darken-3" role="navigation">
+    <div class="nav-wrapper container">
+      <a id="logo-container" href="#" class="brand-logo">uMs</a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="/">HOME</a></li>
+        <li><a href="/create">CREATE USER</a></li>
+      </ul>
+
+      <ul id="nav-mobile" class="side-nav">
+        <li><a href="/">HOME</a></li>
+        <li><a href="/create">CREATE USER</a></li>
+      </ul>
+      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+    </div>
+  </nav>
+  <div class="container">
+    <div class="page-title">
+      <h1>Create user</h1>
+    </div>
+    <div class="path">
+      <ul>
+        <li><a href="/users">home</a></li>
+        <li><i class="material-icons">keyboard_arrow_right</i></li>
+        <li><a href="/users">users</a></li>
+        <li><i class="material-icons">keyboard_arrow_right</i></li>
+        <li>create user</li>
+      </ul>
+    </div>
+    <br>
+    <br>
     <form action="/create" method="post">
-      <label for="first_name">First Name: </label>
-      <input type="text" name="first_name" value="">
+      <label class="form-lable" for="first_name">First Name: </label>
+      <input id="first-name" type="text" name="first_name" required value="">
       <br>
+      <label class="form-lable" for="last_name">Last Name: </label>
+      <input id="last-name" type="text" name="last_name" required value="">
       <br>
-      <label for="last_name">Last Name: </label>
-      <input type="text" name="last_name" value="">
+      <label class="form-lable" for="email">Email: </label>
+      <input id="user-email" type="email" name="email" required value="">
       <br>
+      <label class="form-lable" for="age">Age: </label>
+      <input id="user-age" type="text" name="age" required value="">
       <br>
-      <label for="email">Email: </label>
-      <input type="text" name="email" value="">
-      <br>
-      <br>
-      <label for="age">Age: </label>
-      <input type="text" name="age" value="">
-      <br>
-      <br>
-      <input type="submit" value="Create">
+      <input id="submit-button" type="submit" value="Create">
     </form>
+    <br>
+    <br>
+  </div>
+  <footer class="page-footer blue darken-3">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">Company Bio</h5>
+          <p class="grey-text text-lighten-4">We are a team of college students working on this project like it's our full time job. Any amount would help support and continue development on this project and is greatly appreciated.</p>
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">Company</h5>
+          <ul>
+            <li><a class="white-text" href="#!">Home</a></li>
+            <li><a class="white-text" href="#!">About</a></li>
+            <li><a class="white-text" href="#!">Contact</a></li>
+          </ul>
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">User</h5>
+          <ul>
+            <li><a class="white-text" href="#!">Create New Post</a></li>
+            <li><a class="white-text" href="#!">Profile</a></li>
+            <li><a class="white-text" href="#!">Your Friends</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+      &copy; 2017, Rahul Sharma
+    </div>
+  </footer>
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="/js/materialize.js"></script>
+  <script src="/js/init.js"></script>
+
   </body>
 </html>

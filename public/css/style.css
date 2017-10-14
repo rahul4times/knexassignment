@@ -22,18 +22,12 @@ th{
 }
 
 .footer{
+  font-family: "Lato";
   background-color: #003249;
   color: #CCDBDC;
   padding: 2% 1% 2% 2%;
   text-transform: uppercase;
   font-size: 13px;
-}
-.footer .footer-name{
-  color: #7CFEF0;
-}
-
-.menu-bar{
-  background-color: #003249;
 }
 
 .page-title{
@@ -132,4 +126,34 @@ table a:hover{
   padding-left: 1%;
   border: 1px solid #cbcbcb;
   border-radius: 2px;
+}
+input, button, submit{
+  border:none;
+}
+#submit-button{
+  height: 40px;
+  width: 150px;
+  font-size: 16px;
+  text-transform: uppercase;
+  background-color: #22b346;
+  color: #fff;
+  border: 1px solid #027907;
+  border-radius: 2px;
+  margin-right: 2%;
+}
+
+.delete-btn{
+  text-align: center;
+  line-height: 35px;
+  font-size: 16px;
+  text-transform: uppercase;
+  border: 1px solid #ff0000;
+  background-color: #ff8686;
+  border-radius: 2px;
+  width: 150px;
+  height: 40px;
+  color: #fff;
+}
+.delete-btn a{
+  color: #fff;
 }
