@@ -157,3 +157,46 @@ input, button, submit{
 .delete-btn a{
   color: #fff;
 }
+.pages{
+  text-align: center;
+}
+#post-button{
+  height: 45px;
+  width: 140px;
+  font-size: 16px;
+  text-transform: uppercase;
+  background-color: #2a8bf5;
+  color: #fff;
+  border: 1px solid #005EC5;
+  border-radius: 2px;
+  margin-right: 2%;
+}
+
+textarea{
+  border-radius: 2px;
+  resize: none;
+}
+
+textarea:focus{
+  outline:none;
+}
+
+select{
+  border: 1px solid #000;
+}
+
+/*------ Collapsible header ------------*/
+.collapsible-header{
+  font-weight: bold;
+  font-size: 20px;
+  background-color: #f5f5f5;
+  color: #007EA7;
+}
+.collapsible-body{
+  font-size: 16px;
+}
+
+/*------- Parallax --------*/
+.parallax-container {
+  height: 600px;
+}

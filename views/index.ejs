@@ -1,0 +1,121 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>uMs</title>
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="/css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+</head>
+<body>
+  <nav class="blue darken-3" role="navigation">
+    <div class="nav-wrapper container">
+      <a id="logo-container" href="#" class="brand-logo">uMs</a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="/">HOME</a></li>
+        <li><a href="/create">CREATE USER</a></li>
+      </ul>
+
+      <ul id="nav-mobile" class="side-nav">
+        <li><a href="/">HOME</a></li>
+        <li><a href="/create">CREATE USER</a></li>
+      </ul>
+      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+    </div>
+  </nav>
+  <div id="index-banner" class="parallax-container">
+    <div class="section no-pad-bot">
+      <div class="container">
+        <br><br>
+        <h1 class="header center white-text">Post Something</h1>
+        <div class="row center">
+          <h5 class="header col s12 white-text">do you have something interesting? Share with us!</h5>
+        </div>
+        <br><br>
+      </div>
+    </div>
+    <div class="parallax"><img src="/picOne.jpg" alt="background"></div>
+  </div>
+  <div class="container">
+    <h4 class="center orange-text">START HERE</h4>
+    <div class="row">
+      <form action="/newpost" method="post">
+        <div class="col s12 m7">
+          <textarea name="name" rows="8" cols="80" required placeholder="Type something here!"></textarea>
+        </div>
+        <div class="col s12 m3">
+          <select class="icons" required>
+            <option value="" readonly>Select User</option>
+              
+            <option value="" data-icon="images/sample-1.jpg" class="left circle">example 1</option>
+            <option value="" data-icon="images/office.jpg" class="left circle">example 2</option>
+            <option value="" data-icon="images/yuna.jpg" class="left circle">example 3</option>
+
+
+          </select>
+        </div>
+        <div class="col s12 m2">
+          <input id="post-button" type="submit" value="post">
+        </div>
+      </form>
+    </div>
+
+    <br>
+    <div class="page-title">
+      <h1>Latest posts</h1>
+    </div>
+    <div class="row">
+      <div class="col m12">
+        <ul class="collapsible" data-collapsible="accordion">
+          <% for(let i=0; i<postObject.length; i++){ %>
+            <li>
+              <div class="collapsible-header"><%= postObject[i].content.substring(0, 30) %></div>
+              <div class="collapsible-body"><span><%= postObject[i].content %></span></div>
+            </li>
+          <% } %>
+        </ul>
+      </div>
+    </div>
+    <br>
+    <br>
+  </div>
+  <footer class="page-footer blue darken-3">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">Company Bio</h5>
+          <p class="grey-text text-lighten-4">We are a team of college students working on this project like it's our full time job. Any amount would help support and continue development on this project and is greatly appreciated.</p>
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">Company</h5>
+          <ul>
+            <li><a class="white-text" href="#!">Home</a></li>
+            <li><a class="white-text" href="#!">About</a></li>
+            <li><a class="white-text" href="#!">Contact</a></li>
+          </ul>
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">User</h5>
+          <ul>
+            <li><a class="white-text" href="#!">Create New Post</a></li>
+            <li><a class="white-text" href="#!">Profile</a></li>
+            <li><a class="white-text" href="#!">Your Friends</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+      &copy; 2017, Rahul Sharma
+    </div>
+  </footer>
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="/js/materialize.js"></script>
+  <script src="/js/init.js"></script>
+
+  </body>
+</html>

@@ -13,9 +13,25 @@ app.use(express.static('public'));
 app.set('view engine', 'ejs');
 
 
+// Index page with all posts
+app.get('/', function(req, res) {
+  knex('posts')
+  .orderBy('id')
+  .then((postList) => {
+    res.render('index', {postObject: postList});
+  })
+  .catch((err) => {
+    console.error(err)
+  });
+});
+
+
 // User's list
 app.get('/users', function(req, res) {
-  knex('users').then((userList) => {
+  knex('users')
+  .orderBy('id')
+  .limit(10)
+  .then((userList) => {
     res.render('users', {myObject: userList});
   })
   .catch((err) => {
@@ -45,6 +61,23 @@ app.post('/create', function(req, res) {
       console.log(result);
       //res.sendStatus(200);
       res.redirect('/users');
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(400);
+    });
+});
+
+// Create new post
+app.post('/post/:id', function(req, res) {
+  knex('posts')
+    .insert({
+      content: req.body.content,
+      user_id: req.params.id
+    })
+    .then((result) => {
+      console.log(result);
+      res.redirect('/edit/' + req.params.id);
     })
     .catch((err) => {
       console.error(err);
