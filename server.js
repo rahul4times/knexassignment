@@ -13,17 +13,41 @@ app.use(express.static('public'));
 app.set('view engine', 'ejs');
 
 
-// Index page with all posts
+// Index page - displaying users and posts
 app.get('/', function(req, res) {
-  knex('posts')
-  .orderBy('id')
-  .then((postList) => {
-    res.render('index', {postObject: postList});
-  })
-  .catch((err) => {
-    console.error(err)
-  });
+  knex.select()
+    .from('users')
+    .then(function(users){
+      knex.select()
+      .from('posts')
+      .then(function(posts) {
+        res.render('index', {userObject: users, postObject: posts});
+      });
+    })
+    .catch(function(error) {
+        console.log(error);
+    });
 });
+
+// Comment on post
+app.post('/comment/:pid', function(req, res) {
+  knex('comments')
+    .insert({
+      content: req.body.content,
+      user_id: req.body.id,
+      post_id: req.params.pid
+    })
+    .then((result) => {
+      console.log(result);
+      res.redirect('/');
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(400);
+    });
+});
+
+
 
 
 // User's list

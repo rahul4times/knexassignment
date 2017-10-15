@@ -13,14 +13,16 @@
 <body>
   <nav class="blue darken-3" role="navigation">
     <div class="nav-wrapper container">
-      <a id="logo-container" href="#" class="brand-logo">uMs</a>
+      <a id="logo-container" href="/" class="brand-logo">uMs</a>
       <ul class="right hide-on-med-and-down">
         <li><a href="/">HOME</a></li>
+        <li><a href="/users">USERS</a></li>
         <li><a href="/create">CREATE USER</a></li>
       </ul>
 
       <ul id="nav-mobile" class="side-nav">
         <li><a href="/">HOME</a></li>
+        <li><a href="/users">USERS</a></li>
         <li><a href="/create">CREATE USER</a></li>
       </ul>
       <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
@@ -40,40 +42,44 @@
     <div class="parallax"><img src="/picOne.jpg" alt="background"></div>
   </div>
   <div class="container">
-    <h4 class="center orange-text">START HERE</h4>
-    <div class="row">
-      <form action="/newpost" method="post">
-        <div class="col s12 m7">
-          <textarea name="name" rows="8" cols="80" required placeholder="Type something here!"></textarea>
-        </div>
-        <div class="col s12 m3">
-          <select class="icons" required>
-            <option value="" readonly>Select User</option>
-              
-            <option value="" data-icon="images/sample-1.jpg" class="left circle">example 1</option>
-            <option value="" data-icon="images/office.jpg" class="left circle">example 2</option>
-            <option value="" data-icon="images/yuna.jpg" class="left circle">example 3</option>
-
-
-          </select>
-        </div>
-        <div class="col s12 m2">
-          <input id="post-button" type="submit" value="post">
-        </div>
-      </form>
-    </div>
-
     <br>
-    <div class="page-title">
-      <h1>Latest posts</h1>
-    </div>
+    <br>
+    <h4 class="center orange-text">LATEST POSTS</h4>
+    <br>
     <div class="row">
       <div class="col m12">
         <ul class="collapsible" data-collapsible="accordion">
           <% for(let i=0; i<postObject.length; i++){ %>
             <li>
               <div class="collapsible-header"><%= postObject[i].content.substring(0, 30) %></div>
-              <div class="collapsible-body"><span><%= postObject[i].content %></span></div>
+              <div class="collapsible-body"><span><%= postObject[i].content %></span>
+                <div class="comment">
+                  <div class="row">
+                    <form action="/comment/<%= postObject[i].id %>" method="post">
+                      <div class="col m7">
+                        <textarea name="name" rows="8" cols="80" placeholder="Comment" required></textarea>
+                      </div>
+                      <div class="col m3">
+                        <select name="user">
+                          <option>Select User</option>
+                          <% for(let j=0; j<userObject.length; j++){ %>
+                            <option value="<%= userObject[j].id %>">
+                              <%= userObject[j].first_name %>
+                              <%= userObject[j].last_name %>
+                            </option>
+                          <% } %>
+                        </select>
+                      </div>
+                      <div class="col m2">
+                        <input id="post-btn" type="submit" value="Post">
+                      </div>
+
+                    </form>
+
+                  </div>
+                  <hr>
+                </div>
+              </div>
             </li>
           <% } %>
         </ul>

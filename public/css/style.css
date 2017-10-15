@@ -41,9 +41,6 @@ th{
   font-weight: lighter;
 }
 
-nav{
-  padding: 0 2% 0 2%;
-}
 .material-icons{
   vertical-align: middle;
   padding-right: 2%;
@@ -185,7 +182,7 @@ select{
   border: 1px solid #000;
 }
 
-/*------ Collapsible header ------------*/
+/*------ Collapsible ------------*/
 .collapsible-header{
   font-weight: bold;
   font-size: 20px;
@@ -195,6 +192,31 @@ select{
 .collapsible-body{
   font-size: 16px;
 }
+
+.comment{
+  margin-top: 20px;
+  border: 1px solid #cdcdcd;
+  background-color: #fafafa;
+  text-align: center;
+  padding: 5px;
+}
+.comment textarea{
+  background-color: #fff;
+  border: 1px solid #cdcdcd;
+}
+
+#post-btn{
+  height: 45px;
+  width: 100%;
+  font-size: 12px;
+  text-transform: uppercase;
+  background-color: #e6e6e6;
+  color: #2d2d2d;
+  border: 1px solid #cdcdcd;
+  border-radius: 2px;
+  margin-right: 2%;
+}
+
 
 /*------- Parallax --------*/
 .parallax-container {
