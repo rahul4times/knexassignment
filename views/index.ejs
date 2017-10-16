@@ -51,16 +51,29 @@
         <ul class="collapsible" data-collapsible="accordion">
           <% for(let i=0; i<postObject.length; i++){ %>
             <li>
-              <div class="collapsible-header"><%= postObject[i].content.substring(0, 30) %></div>
+              <div class="collapsible-header"><%= postObject[i].content.substring(0, 30) %>
+
+              </div>
               <div class="collapsible-body"><span><%= postObject[i].content %></span>
+                <br>
+                <div class="post-by">
+                  <% for(let m=0; m<userObject.length; m++){ %>
+                    <% if(postObject[i].user_id === userObject[m].id){ %>
+                      By: <a href="/edit/<%= userObject[m].id %>">
+                        <%= userObject[m].first_name %>
+                        <%= userObject[m].last_name %>
+                      </a>
+                    <% } %>
+                  <% } %>
+                </div>
                 <div class="comment">
                   <div class="row">
                     <form action="/comment/<%= postObject[i].id %>" method="post">
                       <div class="col m7">
-                        <textarea name="name" rows="8" cols="80" placeholder="Comment" required></textarea>
+                        <textarea name="content" rows="8" cols="80" placeholder="Comment" required></textarea>
                       </div>
                       <div class="col m3">
-                        <select name="user">
+                        <select name="user_id">
                           <option>Select User</option>
                           <% for(let j=0; j<userObject.length; j++){ %>
                             <option value="<%= userObject[j].id %>">
@@ -78,6 +91,26 @@
 
                   </div>
                   <hr>
+                  <div class="user-comment">
+                    <% for(let k=0; k<commentObject.length; k++){ %>
+                      <% if(postObject[i].id === commentObject[k].post_id){ %>
+                        <i class="material-icons">comment</i>
+                        <%= commentObject[k].content %>
+                        <% for(let l=0; l<userObject.length; l++){ %>
+                          <% if(commentObject[k].user_id === userObject[l].id){ %>
+                            <span class="comment-by">By: <a href="/edit/<%= userObject[l].id %>">
+                              <%= userObject[l].first_name %>
+                              <%= userObject[l].last_name %></a>
+                            </span>
+                          <% } %>
+                        <% } %>
+                        <br>
+                        <br>
+                      <% } %>
+
+
+                    <% } %>
+                  </div>
                 </div>
               </div>
             </li>
@@ -98,17 +131,17 @@
         <div class="col l3 s12">
           <h5 class="white-text">Company</h5>
           <ul>
-            <li><a class="white-text" href="#!">Home</a></li>
-            <li><a class="white-text" href="#!">About</a></li>
-            <li><a class="white-text" href="#!">Contact</a></li>
+            <li><a class="white-text" href="#">Home</a></li>
+            <li><a class="white-text" href="#">About</a></li>
+            <li><a class="white-text" href="#">Contact</a></li>
           </ul>
         </div>
         <div class="col l3 s12">
           <h5 class="white-text">User</h5>
           <ul>
-            <li><a class="white-text" href="#!">Create New Post</a></li>
-            <li><a class="white-text" href="#!">Profile</a></li>
-            <li><a class="white-text" href="#!">Your Friends</a></li>
+            <li><a class="white-text" href="#">Home</a></li>
+            <li><a class="white-text" href="#">Users</a></li>
+            <li><a class="white-text" href="#">Create Users</a></li>
           </ul>
         </div>
       </div>

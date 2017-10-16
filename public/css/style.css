@@ -75,6 +75,9 @@ table a:hover{
 .path ul li a:hover{
   color: #000;
 }
+.path ul li .you-here{
+  color: #535353;
+}
 
 /*----------- Form style starts here ---------*/
 
@@ -217,8 +220,29 @@ select{
   margin-right: 2%;
 }
 
+.user-comment{
+  text-align: left;
+}
+.user-comment .material-icons{
+  font-size: 14px;
+  padding-right: 2px;
+}
+.comment-by{
+  color: #919191;
+  font-size: 12px;
+  margin-left: 10px;
+}
+.post-by{
+  color: #919191;
+  font-size: 12px;
+}
 
 /*------- Parallax --------*/
 .parallax-container {
   height: 600px;
+}
+
+/*------- Post Head ---------*/
+.post-head{
+  text-align: center;
 }

@@ -13,32 +13,54 @@ app.use(express.static('public'));
 app.set('view engine', 'ejs');
 
 
+// // Index page - displaying users and posts
+// app.get('/', function(req, res) {
+//   knex.select()
+//     .from('users')
+//     .then(function(users){
+//       knex.select()
+//       .from('posts')
+//       .then(function(posts) {
+//         res.render('index', {userObject: users, postObject: posts});
+//       });
+//     })
+//     .catch(function(error) {
+//         console.log(error);
+//     });
+// });
+
 // Index page - displaying users and posts
 app.get('/', function(req, res) {
   knex.select()
     .from('users')
     .then(function(users){
       knex.select()
-      .from('posts')
-      .then(function(posts) {
-        res.render('index', {userObject: users, postObject: posts});
-      });
+        .from('posts')
+        .then(function(posts) {
+          knex.select()
+          .from('comments')
+          .then(function(comments) {
+            res.render('index', {userObject: users, postObject: posts, commentObject: comments});
+          });
+        });
     })
     .catch(function(error) {
         console.log(error);
     });
 });
 
+
+
+
 // Comment on post
 app.post('/comment/:pid', function(req, res) {
   knex('comments')
     .insert({
       content: req.body.content,
-      user_id: req.body.id,
+      user_id: req.body.user_id,
       post_id: req.params.pid
     })
     .then((result) => {
-      console.log(result);
       res.redirect('/');
     })
     .catch((err) => {
@@ -46,7 +68,6 @@ app.post('/comment/:pid', function(req, res) {
       res.sendStatus(400);
     });
 });
-
 
 
 
@@ -110,17 +131,37 @@ app.post('/post/:id', function(req, res) {
 });
 
 
-// Edit Page
+// // Edit Page
+// app.get('/edit/:uid', function(req, res) {
+//   knex('users')
+//   .where('id', req.params.uid)
+//   .then((usersList) => {
+//     res.render('edit', {myObject: usersList[0]});
+//   })
+//   .catch((err) => {
+//     console.error(err)
+//   });
+// });
+
+// Edit page - displaying users and posts
 app.get('/edit/:uid', function(req, res) {
-  knex('users')
-  .where('id', req.params.uid)
-  .then((usersList) => {
-    res.render('edit', {myObject: usersList[0]});
-  })
-  .catch((err) => {
-    console.error(err)
-  });
+  knex.select()
+    .from('users')
+    .where('id', req.params.uid)
+    .then(function(users){
+      knex.select()
+      .from('posts')
+      .orderBy('content', 'desc')
+      .where('user_id', req.params.uid)
+      .then(function(posts) {
+        res.render('edit', {myObject: users, postObject: posts});
+      });
+    })
+    .catch(function(error) {
+        console.log(error);
+    });
 });
+
 
 
 // Edit user

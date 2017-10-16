@@ -3,7 +3,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>uMs - <%= myObject.first_name %>'s Profile</title>
+  <title>uMs - <%= myObject[0].first_name %>'s Profile</title>
 
   <!-- CSS  -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -30,7 +30,7 @@
   </nav>
   <div class="container">
     <div class="page-title">
-      <h1><%= myObject.first_name %>'s Profile</h1>
+      <h1><%= myObject[0].first_name %>'s Profile</h1>
     </div>
     <div class="path">
       <ul>
@@ -38,13 +38,13 @@
         <li><i class="material-icons">keyboard_arrow_right</i></li>
         <li><a href="/users">users</a></li>
         <li><i class="material-icons">keyboard_arrow_right</i></li>
-        <li><%= myObject.first_name %>'s Profile</li>
+        <li><span class="you-here"><%= myObject[0].first_name %>'s Profile</span></li>
       </ul>
     </div>
     <br>
     <br>
     <div class="row">
-      <form action="/post/<%= myObject.id%>" method="post">
+      <form action="/post/<%= myObject[0].id%>" method="post">
         <div class="col m10">
           <textarea name="content" rows="8" cols="80" required value="" placeholder="Post something!"></textarea>
         </div>
@@ -55,28 +55,47 @@
     </div>
     <br>
     <br>
-    <form action="/edit/<%= myObject.id%>" method="post">
+    <form action="/edit/<%= myObject[0].id%>" method="post">
       <label class="form-lable" for="id">User ID: </label>
-      <input id="user-id" type="text" name="id" readonly value="<%= myObject.id %>">
+      <input id="user-id" type="text" name="id" readonly value="<%= myObject[0].id %>">
       <br>
       <label class="form-lable" for="first_name">First Name: </label>
-      <input id="first-name" type="text" name="first_name" value="<%= myObject.first_name %>">
+      <input id="first-name" type="text" name="first_name" value="<%= myObject[0].first_name %>" required>
       <br>
       <label class="form-lable" for="last_name">Last Name: </label>
-      <input id="last-name" type="text" name="last_name" value="<%= myObject.last_name %>">
+      <input id="last-name" type="text" name="last_name" value="<%= myObject[0].last_name %>" required>
       <br>
       <label class="form-lable" for="email">Email: </label>
-      <input id="user-email" type="text" name="email" value="<%= myObject.email %>">
+      <input id="user-email" type="text" name="email" value="<%= myObject[0].email %>" required>
       <br>
       <label class="form-lable" for="age">Age: </label>
-      <input id="user-age" type="text" name="age" value="<%= myObject.age %>">
+      <input id="user-age" type="text" name="age" value="<%= myObject[0].age %>" required>
       <br>
       <input id="submit-button" type="submit" value="Update Profile">
-      <p class="delete-btn" onclick="return confirm('Are you sure you want to delete <%= myObject.first_name %> profile?')"><a href="/delete/<%= myObject.id%>">Delete</a></p>
+      <p class="delete-btn" onclick="return confirm('Are you sure you want to delete <%= myObject[0].first_name %> profile?')"><a href="/delete/<%= myObject[0].id%>">Delete</a></p>
       <br>
       <br>
     </form>
     <br>
+    <div>
+      <div class="post-head">
+        <h4><%= myObject[0].first_name %>'s Posts</h4>
+      </div>
+      <div class="row">
+        <div class="col m12">
+          <ul class="collapsible" data-collapsible="accordion">
+            <% for(let i=0; i<postObject.length; i++){ %>
+            <li>
+              <div class="collapsible-header">
+                <%= postObject[i].content.substring(0, 30) %></div>
+              <div class="collapsible-body"><span>
+                <%= postObject[i].content %></span></div>
+            </li>
+            <% } %>
+          </ul>
+        </div>
+      </div>
+    </div>
     <br>
 
   </div>
@@ -90,17 +109,17 @@
         <div class="col l3 s12">
           <h5 class="white-text">Company</h5>
           <ul>
-            <li><a class="white-text" href="#!">Home</a></li>
-            <li><a class="white-text" href="#!">About</a></li>
-            <li><a class="white-text" href="#!">Contact</a></li>
+            <li><a class="white-text" href="#">Home</a></li>
+            <li><a class="white-text" href="#">About</a></li>
+            <li><a class="white-text" href="#">Contact</a></li>
           </ul>
         </div>
         <div class="col l3 s12">
           <h5 class="white-text">User</h5>
           <ul>
-            <li><a class="white-text" href="#!">Create New Post</a></li>
-            <li><a class="white-text" href="#!">Profile</a></li>
-            <li><a class="white-text" href="#!">Your Friends</a></li>
+            <li><a class="white-text" href="#">Home</a></li>
+            <li><a class="white-text" href="#">Users</a></li>
+            <li><a class="white-text" href="#">Create Users</a></li>
           </ul>
         </div>
       </div>
