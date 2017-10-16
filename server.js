@@ -113,6 +113,7 @@ app.post('/create', function(req, res) {
     });
 });
 
+
 // Create new post
 app.post('/post/:id', function(req, res) {
   knex('posts')
