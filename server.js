@@ -13,21 +13,6 @@ app.use(express.static('public'));
 app.set('view engine', 'ejs');
 
 
-// // Index page - displaying users and posts
-// app.get('/', function(req, res) {
-//   knex.select()
-//     .from('users')
-//     .then(function(users){
-//       knex.select()
-//       .from('posts')
-//       .then(function(posts) {
-//         res.render('index', {userObject: users, postObject: posts});
-//       });
-//     })
-//     .catch(function(error) {
-//         console.log(error);
-//     });
-// });
 
 // Index page - displaying users and posts
 app.get('/', function(req, res) {
@@ -45,11 +30,9 @@ app.get('/', function(req, res) {
         });
     })
     .catch(function(error) {
-        console.log(error);
+      console.log(error);
     });
 });
-
-
 
 
 // Comment on post
@@ -71,18 +54,30 @@ app.post('/comment/:pid', function(req, res) {
 
 
 
+
+
+
+
+
 // User's list
 app.get('/users', function(req, res) {
   knex('users')
   .orderBy('id')
-  .limit(10)
+  
   .then((userList) => {
     res.render('users', {myObject: userList});
+    console.log(userList.length);
   })
   .catch((err) => {
     console.error(err)
   });
 });
+
+
+
+
+
+
 
 
 // Getting to create page
@@ -131,18 +126,6 @@ app.post('/post/:id', function(req, res) {
     });
 });
 
-
-// // Edit Page
-// app.get('/edit/:uid', function(req, res) {
-//   knex('users')
-//   .where('id', req.params.uid)
-//   .then((usersList) => {
-//     res.render('edit', {myObject: usersList[0]});
-//   })
-//   .catch((err) => {
-//     console.error(err)
-//   });
-// });
 
 // Edit page - displaying users and posts
 app.get('/edit/:uid', function(req, res) {
