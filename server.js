@@ -63,7 +63,7 @@ app.post('/comment/:pid', function(req, res) {
 app.get('/users', function(req, res) {
   knex('users')
   .orderBy('id')
-  
+
   .then((userList) => {
     res.render('users', {myObject: userList});
     console.log(userList.length);
@@ -83,8 +83,6 @@ app.get('/users', function(req, res) {
 // Getting to create page
 app.get('/create', function(req, res) {
   knex('users').then((userList) => {
-    //console.log(userList)
-    //res.json(result)
     res.render('create', {myObject: userList});
   })
   .catch((err) => {
@@ -98,8 +96,6 @@ app.post('/create', function(req, res) {
   knex('users')
     .insert(req.body, '*') //req.body brings whole data structure
     .then((result) => {
-      console.log(result);
-      //res.sendStatus(200);
       res.redirect('/users');
     })
     .catch((err) => {
